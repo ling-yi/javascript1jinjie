@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//非严格模式
+//		function foo(){
+//			console.log(this.a);
+//		}
+//		
+//		function active(fn){
+//			fn();
+//		}
+//		
+//		var a = 20;
+//		var obj = {
+//			a: 10,
+//			getA: foo//真实调用者，为独立调用
+//		}
+//		
+//		active(obj.getA);//20
+		
+		//严格模式
+		'use strict';
+		function foo(){
+			console.log(this.a);
+		}
+		
+		function active(fn){
+			fn();//真实调用者，为独立调用
+		}
+		
+		var a = 20;
+		var obj = {
+			a: 10,
+			getA: foo
+		}
+		
+		active(obj.getA);//错误：无法读取未定义的属性'a'
+	</script>
+</html>

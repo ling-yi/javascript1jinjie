@@ -1,0 +1,33 @@
+<!--
+	Object.defineProperty只能设置一个属性的属性特性。当我们想要同时设置多个属性的特性时，需要使用Object.defineProperties
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var person = {};
+		
+		Object.defineProperties(person,{
+			name: {
+				value: 'Jake',
+				configurable: true
+			},
+			age: {
+				get: function(){
+					return this.value || 22
+				},
+				set: function(value){
+					this.value = value;
+				}
+			}
+		})
+		
+		console.log(person.name);
+		console.log(person.age);
+	</script>
+</html>

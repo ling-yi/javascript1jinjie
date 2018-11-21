@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		console.log('golb1');
+		
+		setTimeout(function(){
+			console.log('timeout1');
+			new Promise(function(resolve){
+				console.log('timeout11_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout11_then')
+			});
+			
+			new Promise(function(resolve){
+				console.log('timeout12_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout12_then')
+			});
+			
+			setTimeout(function(){
+			console.log('timeout1.1');
+			new Promise(function(resolve){
+				console.log('timeout1.1_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout1.1_then')
+			})
+		});
+		});
+		
+		setTimeout(function(){
+			console.log('timeout2');
+			new Promise(function(resolve){
+				console.log('timeout21_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout21_then')
+			});
+			
+			new Promise(function(resolve){
+				console.log('timeout22_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout22_then')
+			});
+		});
+		
+		new Promise(function(resolve){
+			console.log('glob1_promise');
+			resolve();
+		}).then(function(){
+			console.log('glob1_then')
+		})
+		
+		new Promise(function(resolve){
+			console.log('glob2_promise');
+			resolve();
+		}).then(function(){
+			console.log('glob2_then')
+		})
+		
+		setTimeout(function(){
+			console.log('timeout3');
+			new Promise(function(resolve){
+				console.log('timeout31_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout31_then')
+			});
+			
+			new Promise(function(resolve){
+				console.log('timeout32_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout32_then')
+			});
+		});
+		
+		new Promise(function(resolve){
+			console.log('glob3_promise');
+			resolve();
+		}).then(function(){
+			console.log('glob3_then')
+		})
+		
+		new Promise(function(resolve){
+			console.log('glob4_promise');
+			resolve();
+		}).then(function(){
+			console.log('glob4_then')
+		})
+		
+		setTimeout(function(){
+			console.log('timeout4');
+			new Promise(function(resolve){
+				console.log('timeout41_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout41_then')
+			});
+			
+			new Promise(function(resolve){
+				console.log('timeout42_promise');
+				resolve();
+			}).then(function(){
+				console.log('timeout42_then')
+			});
+		});
+	</script>
+</html>

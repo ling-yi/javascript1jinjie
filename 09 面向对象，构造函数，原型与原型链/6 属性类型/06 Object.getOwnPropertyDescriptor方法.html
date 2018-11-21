@@ -1,0 +1,25 @@
+<!--
+	Object.getOwnPeopertyDescriptor方法可以用来读取某一个属性的特性值
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var person = {};
+		
+		Object.defineProperty(person, 'name', {
+			value: 'value',
+			writable: false,
+			configurable: false
+		})
+		
+		var descripter = Object.getOwnPropertyDescriptor(person, 'name');
+		
+		console.log(descripter);
+	</script>
+</html>

@@ -1,0 +1,6 @@
+1 所有引用类型默认继承Object,这个继承通过原型链实现
+
+2 所有函数的默认原型都是Object的实例。因此默认原型都会包含一个内部指针([[prototypr]]或__proto__)，指向Object.prototype
+
+3 原型链图网址：
+	https://upload-images.jianshu.io/upload_images/599584-c77eb714f66b8185.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/927/format/webp

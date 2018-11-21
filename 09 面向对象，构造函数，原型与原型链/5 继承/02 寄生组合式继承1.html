@@ -1,0 +1,63 @@
+<!--
+	寄生组合式继承弥补了组合式继承的缺陷
+	寄生组合式继承，通过借用构造函数来继承属性，通过原型链的混成模式来继承方法。其后的基本思路：不必为了指定子类型的原型而调用超类型的构造函数，我们所需要的无非就是超类型的原型的一个副本而已。本质上，就是使用寄生式继承来继承超类型的原型，然后再将结果指定给子类型的原型。
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(name, age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+		
+		Person.prototype.getAge = function(){
+			return this.age;
+		}
+		
+		//构建函数的继承
+		function Student(name, age, grade){
+			Person.call(this, name, age);
+			this.grade = grade;
+		}
+		
+		//封装一个方法，该方法创建一个实例指向父类对象的原型，最终返回该实例，该实例将会作为子类对象的原型
+		function create(proto, options){
+			//创建一个空对象
+			var tmp = {};
+			
+			//让这个空对象的__proto__指向传入的proto,一般式父类对象的原型
+			tmp.__proto__ = proto;
+			
+			//options中传入的方法或属性都挂载到新对象上，这个新对象将作为子类对象的原型
+			Object.defineProperties(tmp,options);
+			return tmp;
+		}
+		
+		Student.prototype = create(Person.prototype,{
+			//重新指定构造函数
+			constructor:{
+				value:Student
+			},
+			getGrade:{
+				value:function(){
+					return this.grade;
+				}
+			}
+		});
+		
+		var s1 = new Student('ming', 22, 5);
+		console.log(s1.getName());//ming
+		console.log(s1.getAge());//22
+		console.log(s1.getGrade());//5
+	</script>
+</html>

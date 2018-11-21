@@ -1,0 +1,40 @@
+<!--
+	enumerable:是否能被枚举。也就是是否能被for-in遍历。默认值为true
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var person = {
+			name: 'TOM',
+			age: 20
+		};
+		
+		//使用for-in枚举person的属性
+		var params = [];
+		
+		for(var key in person){
+			params.push(key);
+		}
+		
+		console.log(params);//["name", "age"]
+		
+		//设置name的属性类型的enumerable为false,让其不可枚举
+		Object.defineProperty(person, 'name',{
+			enumerable: false
+		})
+		
+		var params_ = [];
+		
+		for(var key in person){
+			params_.push(key);
+		}
+		
+		console.log(params_);//["age"]
+	</script>
+</html>

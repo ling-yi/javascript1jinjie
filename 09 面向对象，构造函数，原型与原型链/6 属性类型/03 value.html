@@ -1,0 +1,22 @@
+<!--
+	value: 该属性的具体值是多少。默认为undefined
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var person = {};
+		
+		//添加一个name属性
+		Object.defineProperty(person, 'name',{
+			value: 'Tom'
+		})
+		
+		console.log(person.name);//Tom
+	</script>
+</html>

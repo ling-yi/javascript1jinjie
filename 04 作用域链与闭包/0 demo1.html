@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//demo1
+		function foo(){
+			var a = 20;
+			var b = 30;
+			
+			function bar(){
+				return a + b;
+			}
+			
+			return bar;
+		}
+		
+		var bar = foo();
+		console.log(bar());//50
+	</script>
+</html>

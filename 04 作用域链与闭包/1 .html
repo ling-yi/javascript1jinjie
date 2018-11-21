@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var fn = null;
+		function foo(){
+			var a = 2;
+			function innerFoo(){
+				console.log(c);//错误：c未定义。变量c在函数bar()中，不再函数innerFoo()的作用域内，innerFoo函数无法访问，抛出错误
+				console.log(a);
+			}
+			fn = innerFoo;//将innerFoo的引用，赋值给全局变量中的fn
+		}
+		
+		function bar(){
+			var c = 100;
+			fn();//此处的保留的innerFoo的引用
+		}
+		
+		foo();
+		bar();//2
+	</script>
+</html>

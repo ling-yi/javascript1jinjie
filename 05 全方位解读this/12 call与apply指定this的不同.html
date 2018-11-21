@@ -1,0 +1,23 @@
+<!--
+	call与apply的第一个参数都是this要指定的对象，之后的参数，是向将要执行的函数传递参数。其中call以一个一个的形式传递，apply以数组的形式传递。这是它们唯一的不同。
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function fn(num1,num2){
+			console.log(this.a + num1 + num2);
+		}
+		var obj = {
+			a: 20
+		}
+		
+		fn.call(obj, 100, 10);//130
+		fn.apply(obj, [20,10]);//50
+	</script>
+</html>

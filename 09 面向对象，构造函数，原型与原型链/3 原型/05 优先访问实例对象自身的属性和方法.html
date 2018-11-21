@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//在这个例子中，原型与构造函数中都声明了一个getName函数，运行结果表示访问了构造函数中的getName函数，原型中的没有访问
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+			this.getName = function(){
+				console.log('this is cinstructor.');
+			}
+		}
+		
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+		
+		var p1 = new Person('tim',10);
+		
+		p1.getName();//this is cinstructor.
+	</script>
+</html>

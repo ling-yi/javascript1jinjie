@@ -1,0 +1,27 @@
+<!--
+	通过in可以判断一个对象是否拥有某属性或方法，无论该属性或方法存在于实例对象还是原型对象
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+		
+		var p1 = new Person('tim', 10);
+		
+		console.log('name' in p1);//true
+		console.log('getName' in p1);//true
+	</script>
+</html>

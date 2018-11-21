@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var fn = function(num){
+				return new Promise(function(resolve,reject){
+					if (typeof num == 'number'){
+						resolve(num);
+					} else {
+						reject('TypeError');
+					}
+				})
+			}
+			
+			fn(2).then(function(num){
+				console.log('first: ' + num);
+				return num + 1;
+			}).then(function(num){
+				console.log('second: ' + num);
+				return num + 1;
+			}).then(function(num){
+				console.log('third: ' + num);
+				return num + 1;
+			});
+			
+			fn('abc').then(null,function(error){
+				console.log(error);
+			})
+		</script>
+	</body>
+</html>

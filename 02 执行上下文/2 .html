@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function f1(){
+			var n = 999;
+			function f2(){
+				alert(n);
+			}
+			return f2;
+		}
+		var result = f1();
+		result();//999
+	</script>
+</html>

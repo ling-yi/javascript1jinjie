@@ -1,0 +1,15 @@
+1 直接在已有的原型对象上添加更多方法：
+	function Person() {}
+	Person.prototype.getName = function() {}
+	Person.prototype.getAge = function() {}
+	Person.prototype.sayHello = function() {}
+	... ...
+
+2 用字面量的写法，即Person.prototype = {}。这种写法实际上是重新创建一个{}对象并赋值给Person.prototype,这里的{}并不是最初的那个原型对象。因此它里面并不包括constructor属性。为了保证正确性，需要在新创建的{}里面显示地设置constructor的指向
+	function Person(){}
+	Person.prototype = {
+		constructor: Person,
+		getName: function(){},
+		getAge: function(){},
+		sayHello: function(){}
+	}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		//原型方法上的this可以根据函数中this的指向来确定
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+		
+		//当new操作符调用构造函数时，this指向的是这个新创建的对象
+		var p1 = new Person('Nick', 20);
+		console.log(p1.getName());//Nick
+		var p = p1.getName;
+		console.log(p());
+	</script>
+</html>

@@ -1,0 +1,64 @@
+<!--
+	Object.create 函数 :创建一个具有指定原型且可选择性地包含指定属性的对象。
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(name, age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+		
+		Person.prototype.getAge = function(){
+			return this.age;
+		}
+		
+		//构建函数的继承
+		function Student(name, age, grade){
+			Person.call(this, name, age);
+			this.grade = grade;
+		}
+		
+		//在ECMAScript5中直接提供了一个Object.create方法来完成下面我们自己封装的create的功能
+		//封装一个方法，该方法创建一个实例指向父类对象的原型，最终返回该实例，该实例将会作为子类对象的原型
+//		function create(proto, options){
+//			//创建一个空对象
+//			var tmp = {};
+//			
+//			//让这个空对象的__proto__指向传入的proto,一般式父类对象的原型
+//			tmp.__proto__ = proto;
+//			
+//			//options中传入的方法或属性都挂载到新对象上，这个新对象将作为子类对象的原型
+//			Object.defineProperties(tmp,options);
+//			return tmp;
+//		}
+		
+		//原型继承
+		Student.prototype = Object.create(Person.prototype,{
+			//重新指定构造函数
+			constructor:{
+				value:Student
+			},
+			getGrade:{
+				value:function(){
+					return this.grade;
+				}
+			}
+		});
+		
+		var s1 = new Student('ming', 22, 5);
+		console.log(s1.getName());//ming
+		console.log(s1.getAge());//22
+		console.log(s1.getGrade());//5
+	</script>
+</html>

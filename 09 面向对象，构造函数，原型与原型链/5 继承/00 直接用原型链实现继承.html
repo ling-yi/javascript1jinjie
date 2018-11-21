@@ -1,0 +1,43 @@
+<!--
+	1 直接通过原型链实现继承：就是重写A引用类型的原型对象，代之以B引用类型的实例。引用类型A就继承了引用类型B
+	2 这种方法有两个问题：
+		2.1 通过原型实现继承时，原型实际上变成了另一个引用类型的实例。原有的实例属性会变成现有的原型属性，被所有实例所共享。就是说B引用类型实例变成了A引用类型的原型属性，被A引用类型的实例所共享。
+		2.2 在创建子类型的实例时，不能向超类型的构造函数中传递参数。实际上，应该说是没有办法在不影响所有对象实例的情况下，给超类型的构造函数传递参数
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(name, age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+		
+		function cPerson(job){
+			this.job = job;
+		}
+		
+		cPerson.prototype = new Person('zhsng',23);
+		cPerson.prototype.getLive = function(){}
+		
+		var cperson0 = new cPerson('teacher');
+		console.log(cperson0.getName());//zhsng
+		console.log(cperson0.name);//zhsng
+		
+		var cperson1 = new cPerson('doctor');
+		console.log(cperson1.getName());//zhsng
+		console.log(cperson1.name);//zhsng
+		cperson1.__proto__.name = 'Tom';
+		
+		console.log(cperson0.getName());
+	</script>
+</html>

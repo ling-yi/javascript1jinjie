@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function fn(){
+			'use strict';
+			console.log(this);
+		}
+		
+		fn();//undefined
+		window.fn();//window对象
+	</script>
+</html>

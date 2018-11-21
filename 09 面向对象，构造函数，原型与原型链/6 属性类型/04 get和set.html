@@ -1,0 +1,41 @@
+<!--
+	1 get和set的作用：
+		get:在读取属性时调用的函数，会返回有效的值
+		set:在设置属性值时调用的函数，这个函数会接受新值并决定如何处理数据。一个重要的常用方式是：更改一个属性的值导致其他属性发生变化
+	2 两点要注意的地方：
+		2.1 不能同时设置value、writable与get、set的值
+		2.2 尽量同时设置get、sert。如果仅仅只设置了get,我们将无法设置改属性值。如果仅仅只设置了set，我们将无法读取该属性的值
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var person = {};
+		
+		//通过get与set自定义访问与设置name属性的方式
+		Object.defineProperty(person, 'name',{
+			get: function(){
+				//一直返回TOM
+				return 'TOM'
+			},
+			set:function(value){
+				//设置name属性时，返回该字符串，value为新值
+				console.log(value + ' in set');
+			}
+		})
+		
+		//
+		console.log(person.name);//TOM
+		
+		//
+		person.name = 'alex';//alex in set
+		
+		//
+		console.log(person.name);//TOM
+	</script>
+</html>

@@ -1,0 +1,40 @@
+<!--
+	configurable: 表示该属性是否能被delete删除。当其值为false时，其他的特性也不能被改变。默认值为true
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//用普通的方式给person对象添加name属性，值为Tom
+		var person = {
+			name: 'TOM'
+		};
+		
+		//使用delete删除属性
+		console.log(delete person.name);//返回true,表示删除成功
+		
+		//通过Object.defineProperty重新添加name属性
+		//同时设置name的属性类型的configurable为false,表示不能用delete删除
+		Object.defineProperty(person, 'name',{
+			configurable: false,
+			value: 'Jake'//设置name属性的值
+		})
+		
+		//再次delete，已经不能删除了
+		console.log(delete person.name);//false
+		
+		console.log(person.name);//Jake
+		//试图设置name的属性类型的writable为true.
+//		Object.defineProperty(person, 'name',{//错误，无法重新定义属性：name
+//			writable: true
+//		})
+		//试图改变value
+		person.value = 'alex';
+		console.log(person.name);//Jake(改变失败)
+	</script>
+</html>

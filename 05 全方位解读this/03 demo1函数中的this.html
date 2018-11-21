@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//非严格模式
+//		var a = 20;
+//		function fn(){
+//			console.log(this.a);
+//		}
+//		fn();//20
+		
+		//严格模式
+		var a = 20;
+		function fn(){
+			'use strict'
+			console.log(this.a);//错误：无法读取未定义的属性'a'
+		}
+		fn();//
+	</script>
+</html>

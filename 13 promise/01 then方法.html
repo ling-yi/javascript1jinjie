@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function fn(num){
+			return new Promise(function(resolve,reject){
+				if (typeof num == 'number'){
+					resolve();
+				}else{
+					reject();
+				}
+			}).then(function(){
+				console.log('参数是一个number值');
+			},function(){
+				console.log('参数不是一个number值');
+			})
+		}
+		
+		fn('hahha');
+		fn(1234);
+	</script>
+</html>

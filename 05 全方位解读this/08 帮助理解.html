@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var a = 20;
+		var foo = {
+			a: 10,
+			getA: function(){
+				return this.a;
+			}
+		}
+		console.log(foo.getA());//10
+		
+		var test = foo.getA;
+		console.log(test());//20
+	</script>
+</html>

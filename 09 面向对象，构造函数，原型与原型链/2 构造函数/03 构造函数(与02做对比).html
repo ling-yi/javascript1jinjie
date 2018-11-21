@@ -1,0 +1,36 @@
+<!--
+	1 与普通函数相比，构造函数并没有特别的地方,首字母大写只是约定的小规定，用于区分普通函数
+	2 new关键字让构造函数具有了与普通函数不同的许多特点，而new的过程中，执行了如下过程：
+		2.1声明一个中间对象；
+		2.2将该中间对象的原型指向构造函数的原型；
+		2.3将构造函数的this，指向该中间对象；
+		2.4返回该中间对象，即返回实例对象。
+	3 构造函数解决了工厂模式的第一个缺陷：无法识别对象实例的类型。但第二个缺陷依然存在
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var Person = function(name, age){
+			this.name = name;
+			this.age = age;
+			this.getName = function(){
+				return this.name;
+			}
+		}
+		
+		var p1 = new Person('Ness', 20);
+		console.log(p1.getName());//Ness
+		console.log(p1 instanceof Person);//true
+		
+		var p2 ={};
+		Person.call(p2, 'zhang' ,23);
+		console.log(p2.getName());//zhang
+		console.log(p2 instanceof Person);//false
+	</script>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//严格模式
+		'use strict';
+		var a = 20;
+		function foo(){
+			var a = 1;
+			var obj = {
+				a:10,
+				c: this.a + 20,
+				fn: function(){
+					return this.a;
+				}
+			}
+			return obj.c;
+		}
+		
+		console.log(window.foo());//错误：无法读取未定义的属性'a'
+		console.log(foo());//40
+		
+	</script>
+</html>

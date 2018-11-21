@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//demo6
+		var a = 10;
+		var obj = {
+			a: 20
+		}
+		
+		function fn(){
+			console.log(this.a);
+		}
+		
+		fn.call(obj);
+	</script>
+</html>

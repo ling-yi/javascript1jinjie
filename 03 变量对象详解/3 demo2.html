@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//demo2
+		function test(){
+			console.log(foo);//function foo
+			console.log(bar);//undefined
+			
+			var foo = 'hello';//hello
+			console.log(foo);
+			var bar = function(){
+				return 'world';
+			}
+			
+			function foo(){
+				return 'hi';
+			}
+		}
+		
+		test();
+	</script>
+</html>

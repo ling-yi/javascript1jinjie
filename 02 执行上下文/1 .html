@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var color = 'blue';
+		
+		function changeColor(){
+			var anotherColor = 'red';
+			
+			function swapColors(){
+				var tempColor = anotherColor;
+				anotherColor = color;
+				color = tempColor;
+			}
+			
+			swapColors();
+//			alert(tempColor);//错误：tempColor没有定义
+//			alert(anotherColor);//blue
+		}
+		
+		changeColor();
+//		alert(anotherColor);//错误：anotherColor
+		alert(color);//red
+	</script>
+</html>

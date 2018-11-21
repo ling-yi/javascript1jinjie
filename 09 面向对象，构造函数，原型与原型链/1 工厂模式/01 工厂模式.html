@@ -1,0 +1,40 @@
+<!--	
+	工厂模式解决了传统创建多个相似对象过程中的代码重复问题
+	工厂模式：提供一个模子，然后通过这个墨子复制出我们需要的对象。我们需要多少个，就复制多少个。
+	工厂模式的缺陷：
+		1 无法识别对象实例的类型（这个用构造函数可以解决）
+		2 当声明很多对象时，里面的方法被重新生成，但方法的功能是一样的。这就造成了不停为同一方法分配空间的浪费。(这个用原型解决)
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var createPerson = function(name, age){
+			
+			//声明一个中间对象，该对象就是工厂模式的模子
+			var o = new Object();
+			
+			//依次添加我们需要的属性与方法
+			o.name = name;
+			o.age = age;
+			o.getName = function(){
+				return this.name;
+			}
+			
+			return o;
+		}
+		
+		//创建两个实例
+		var perTom = createPerson('Tom', 20);
+		var PerJake = createPerson('Jake', 22);
+		console.log(perTom.age);
+		console.log(PerJake['age']);
+		console.log(perTom instanceof Object);
+		console.log(PerJake instanceof Function);
+	</script>
+</html>

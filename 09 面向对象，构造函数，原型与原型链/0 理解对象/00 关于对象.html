@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//创建对象的两种方式
+		var obj0 = new Object();
+		var obj1 = {};
+		
+		//给已经创建的简单对象添加属性方法
+		obj0.name = "Tom";
+		obj0.age = 23;
+		obj0.getName = function(){
+			return this.name;
+		}
+		obj1.name = "Bom";
+		obj1.getName = function(){
+			return this.name;
+		}
+		
+		//访问对象的属性与方法
+		//点表示法：一般作为静态对象使用时来存取属性
+		//数组表示法：在动态存取属性时非常有用
+		console.log(obj0.name);
+		console.log(obj1['name']);
+		console.log(obj1.getName);
+		console.log(obj1['getName']);
+		
+		//
+		//同时访问某个对象的多个属性
+		['name', 'age'].forEach(function(item){
+			console.log(obj0[item]);
+		})
+		
+	</script>
+</html>

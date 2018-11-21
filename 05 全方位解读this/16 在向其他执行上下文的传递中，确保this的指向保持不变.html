@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//4个demo对比
+		
+		//demo1
+		//由于匿名函数的存在，this指向了全局对象
+//		var obj = {
+//			a: 20,
+//			getA: function(){
+//				setTimeout(function(){
+//					console.log(this.a);
+//				},1000)
+//			}
+//		}
+//		obj.getA();//undefined
+		
+		//demo2
+		//使用一个变量，将this起存起来。让匿名函数引用这个变量，形成一个闭包
+//		var obj = {
+//			a:20,
+//			getA: function(){
+//				var self = this;
+//				setTimeout(function(){
+//					console.log(self.a);
+//				},1000)
+//			}
+//		}
+//		obj.getA();//20
+
+		//demo3
+		//借助闭包与apply方法，封装一个bind方法
+//		function bind(fn,obj){
+//			return function(){
+//				return fn.apply(obj,arguments);
+//			}
+//		}
+//		var obj = {
+//			a: 20,
+//			getA: function(){
+//				setTimeout(bind(function(){
+//					console.log(this.a)
+//				},this),1000)
+//			}
+//		}
+//		obj.getA();//20
+
+		//demo4
+		//使用ES5中已经自带的bind方法。它与demo3封装的bind方法是一样的效果
+		var obj = {
+			a: 20,
+			getA: function(){
+				setTimeout(function(){
+					console.log(this.a)
+				}.bind(this),1000)
+			}
+		}
+		obj.getA();//20
+	</script>
+</html>

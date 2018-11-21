@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function exam(a,b,c,d,e){
+			console.log(arguments);//{'0':2,'1':8,'2':9,'3':10,'4':3}
+			//[].slice.call()方法经常被用来将arguments和DOM中的nodelist转换为数组。
+			var arg = [].slice.call(arguments);
+			console.log(arg);//[2,8,9,10,3]
+		}
+		
+		exam(2,8,9,10,3);
+		
+	</script>
+</html>

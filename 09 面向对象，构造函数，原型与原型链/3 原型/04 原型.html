@@ -1,0 +1,31 @@
+<!--
+	1 我们创建的每一个函数，都会有一个prototype属性，该属性指向一个对象。这个对象，就是原型
+	2 每一个new出来的实例，都会有一个__proto__属性指向构造函数的原型对象（即prototype）。通过这个属性，实例对象可以访问原型对象上的方法。这样，就解决了工厂模式的第二个缺陷：重复为同一方法分配空间造成浪费。
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//声明构造函数
+		function Person(name, age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		//通过prototype属性，将方法挂载到原型对象上
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+	
+		var p1 = new Person('tim', 10);
+		var p2 = new Person('jak', 22);
+		console.log(p1.getName === p2.getName);//true
+		console.log(p1.__proto__);
+		console.log(Person.prototype);
+	</script>
+</html>

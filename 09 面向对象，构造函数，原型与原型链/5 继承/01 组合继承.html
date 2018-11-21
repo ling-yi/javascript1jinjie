@@ -1,0 +1,46 @@
+<!--
+	组合继承（经典继承）：使用原型链实现对原型属性和方法的继承，通过借用构造函数实现对实例属性的继承。这样，既通过在原型上定义方法实现了函数复用，又能保证每个实例拥有它自己的属性
+	组合继承存在一个问题：无论什么声明情况下，都会调用两次超类型构造函数。一次是创建子类型原型的时候，另一次是在子类型构造函数内部。这也导致在子类型函数的原型内部含有不必要的多余的属性
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		function Person(name, age){
+			this.name = name;
+			this.age = age;
+		}
+		
+		Person.prototype.getName = function(){
+			return this.name;
+		}
+		
+		//构建函数的继承
+		function cPerson(name, age, job){
+			Person.call(this, name, age);
+			this.job = job;
+		}
+		
+		cPerson.prototype = new Person('zhsng',23);
+		cPerson.prototype.getLive = function(){}
+		
+		var cperson0 = new cPerson('zhang',12,'teacher');
+		console.log(cperson0.getName());//zhang
+		console.log(cperson0.name);//zhang
+		console.log(cperson0.__proto__.name);//zhsng
+		
+		var cperson1 = new cPerson('Jenny',23,'doctor');
+		console.log(cperson1.getName());//Jenny
+		console.log(cperson1.name);//Jenny
+		console.log(cperson1.__proto__.name);//zhsng
+		
+		
+		cperson1.__proto__.name = 'Tom';
+		console.log(cperson0.__proto__.name);//Tom
+	</script>
+</html>

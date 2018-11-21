@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var foo = {
+			name: 'joker',
+			showName: function(){
+				console.log(this.name);
+			}
+		}
+		var bar = {
+			name:'rose'
+		}
+		foo.showName();//joker
+		foo.showName.call(bar);//rose
+	</script>
+</html>
